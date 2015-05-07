@@ -24,7 +24,7 @@ public class InsertAction implements Action{
 		String content=request.getParameter("content");
 		GuestBookDao dao=new GuestBookDao();
 		dao.add(new GuestBookVo(name, pw, content));
-		response.sendRedirect("/guestbook");
+		response.sendRedirect("/guestbook/gb");
 	}
 
 	

@@ -20,11 +20,12 @@ public class DeleteAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		String no=request.getParameter("no");
 		String password=request.getParameter("password");
+		System.out.println(no+":no, "+password);
 		GuestBookDao dao=new GuestBookDao();
 		GuestBookVo vo=dao.selectOne(Long.parseLong(no));
 		if(vo.getPassword().equals(password)){
 			dao.delete(Long.parseLong(no));		
-			response.sendRedirect("/guestbook");
+			response.sendRedirect("/guestbook/gb");
 		}else{
 			request.setAttribute("msg", "비밀번호를 다시 확인해주세요!");
 			request.getRequestDispatcher("/deleteform.jsp").forward(request, response);
